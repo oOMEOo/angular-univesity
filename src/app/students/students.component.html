@@ -1,0 +1,18 @@
+<table>
+  <tr>
+    <th>ID</th>
+    <th>First Name</th>
+    <th>Last Name</th>
+    <th></th>
+  </tr>
+  <tr *ngFor="let student of studentList">
+    <td>{{student.id}}</td>
+    <td>{{student.first_name}}</td>
+    <td>{{student.last_name}}</td>
+    <td>
+      <a routerLink="/student/{{student.id}}">Edit</a> | <a routerLink="" (click)="deleteStudent(student.id)">Delete</a>
+    </td>
+  </tr>
+</table>
+<a class="nav-link" href="student/create">Create New Student</a>
+{{studentList | json}}
