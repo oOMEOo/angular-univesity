@@ -1,0 +1,23 @@
+<form [formGroup]="studentForm" (ngSubmit)="onSubmit(studentForm)" novalidate>
+  <div formGroupName="studentData" novalidate>
+    <div class="form-group" *ngIf="studentForm.get('studentData').get('id').value !== -1">
+      <label for="id">ID</label>
+      <input formControlName="id" class="form-control" placeholder="ID">
+    </div>
+    <div class="form-group">
+      <label for="first_name">First Name</label>
+      <input formControlName="first_name" class="form-control" placeholder="First Name eg Luke">
+    </div>
+    <div class="form-group">
+      <label for="last_name">Last Name</label>
+      <input formControlName="last_name" class="form-control" placeholder="Last Name eg. Lindner">
+    </div>
+  </div>
+
+  <button type="submit" [disabled]="studentForm.pristine" class="btn btn-primary">{{studentForm.get('studentData').get('id').value
+    !== -1 ? 'Update' : 'Create'}}</button>
+  <button type="reset" (click)="revert()" [disabled]="studentForm.pristine" class="btn btn-secondary">Revert</button>
+
+</form>
+<div>Form Value: {{studentForm.value | json}}</div>
+<div>Current Student: {{currentStudent | json}}</div>
